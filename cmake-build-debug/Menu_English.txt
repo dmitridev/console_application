@@ -1,0 +1,10 @@
+1) Show table
+2) Edit table
+3) Sort by ...
+4) Search for records
+5) Search for minimum and maximum values
+6) Save the table to a new file
+7) Help
+8) Русский
+9) Exit
+Select item:

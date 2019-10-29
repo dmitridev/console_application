@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Console_application"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Console_application">
+				<Option output="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Console_application" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 Console_application"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Console_application/fast">
+				<Option output="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Console_application" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 Console_application/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/admin/Desktop/программирование/c++/Console_application/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/CinemaRecord.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/CinemaRecord.h">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Database.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Database.h">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Files.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Files.h">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Menu.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Menu.h">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Utils.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/Utils.h">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/main.cpp">
+			<Option target="Console_application"/>
+		</Unit>
+		<Unit filename="/Users/admin/Desktop/программирование/c++/Console_application/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
