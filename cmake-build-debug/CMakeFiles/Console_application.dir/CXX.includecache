@@ -67,6 +67,10 @@ stdio.h
 -
 stdlib.h
 -
+malloc/malloc.h
+-
+string.h
+-
 Utils.h
 /Users/admin/Desktop/программирование/c++/Console_application/Utils.h
 

@@ -16,74 +16,21 @@ void EnMenu();
 void Exit();
 
 
-CinemaRecord* records_table;
+CinemaRecord** records_table;
 CinemaRecord * new_record;
 char* current_menu_textfile;
 int length;
 bool RussianOrEnglish = true; //true если русский язык, false если английский
 
+char* ChangeTextFileToCurrentLanguage(char * textFile);
+void ChangeLang();
+void OnMainMenu();
+void Menu_ShowTable();
+void Menu_EditTable();
+void Menu_AddNewRecord();
+void Menu_EditRecord();
+void Menu_EditTable();
 
-
-char* ChangeTextFileToCurrentLanguage(char * textFile){
-        size_t i = 0;
-        char * retValue = (char*)malloc(sizeof(char)* strlen(textFile));
-        for(i = strlen(textFile);i>0;i++){
-            if(textFile[i] == '_'){
-                break; // нашли точку смены текстового имени
-                //теперь зная где менять файл что делать дальше?
-            }
-        }
-        char * tmp= (char*)malloc(sizeof(char)*i);
-        strncpy(tmp,textFile,i);
-
-        sprintf(retValue,"%s%s",tmp,retValue);
-
-    return retValue;
-}
-
-void ChangeLang(){
-    RussianOrEnglish = !RussianOrEnglish;
-    ChangeTextFileToCurrentLanguage(current_menu_textfile);
-}
-
-void OnMainMenu(){
-    if(RussianOrEnglish){
-        RusMenu();
-    }else EnMenu();
-
-}
-void Menu_ShowTable(){
-    fflush(stdin);
-
-    ShowTable(records_table,length);
-
-    getchar();
-    OnMainMenu();
-}
-
-
-void Menu_AddNewRecord(){
-    CinemaRecord * new_record = (CinemaRecord*)malloc(sizeof(CinemaRecord));
-    EditRecord(new_record);
-    AddNewRecord(records_table,length,new_record);
-}
-
-
-
-
-void Menu_EditTable(){
-    current_menu_textfile = (char*)malloc(sizeof(char)*21);
-    strcpy(current_menu_textfile,RussianOrEnglish ? "/Users/admin/Desktop/программирование/c++/Console_application/Edit_Menu_Russian.txt":"Edit_Menu_English.txt");
-
-
-    DrawMenu(current_menu_textfile,
-             5, // 5 пунктов меню
-             Menu_AddNewRecord,
-             EditRecord,
-             DeleteRecord,
-             ChangeLang,
-             OnMainMenu);
-}
 
 
 int main()
@@ -92,12 +39,13 @@ int main()
     setlocale(LC_ALL, "");
 
     records_table = ReadDatabaseFile("/Users/admin/Desktop/программирование/c++/Console_application/Database.txt",length);
-    getchar();
+
     DrawMenu("/Users/admin/Desktop/программирование/c++/Console_application/Menu_Main.txt",
                   3, // 3 пункта меню
                   RusMenu, // 1 - выбрать русский язык
                   EnMenu,  // 2 - выбрать английский язык
                   Exit);   // 3 - выход
+
 
     return 0;
 }
@@ -145,5 +93,76 @@ void EnMenu(){
 
 
 void Exit() {
+    for(int i=0;i<length;i++){
+        free(&records_table[i]);
+    }
+    free(*records_table);
     exit(0);
+}
+
+char* ChangeTextFileToCurrentLanguage(char * textFile){
+    size_t i = 0;
+    char * retValue = (char*)malloc(sizeof(char)* strlen(textFile));
+    for(i = strlen(textFile);i>0;i++){
+        if(textFile[i] == '_'){
+            break; // нашли точку смены текстового имени
+            //теперь зная где менять файл что делать дальше?
+        }
+    }
+    char * tmp= (char*)malloc(sizeof(char)*i);
+    strncpy(tmp,textFile,i);
+
+    sprintf(retValue,"%s%s",tmp,retValue);
+
+    return retValue;
+}
+
+void ChangeLang(){
+
+    RussianOrEnglish = !RussianOrEnglish;
+    ChangeTextFileToCurrentLanguage(current_menu_textfile);
+}
+
+void OnMainMenu(){
+
+    if(RussianOrEnglish){
+        RusMenu();
+    }else EnMenu();
+
+}
+
+void Menu_ShowTable(){
+
+
+    ShowTable(records_table,length);
+    getchar();
+    OnMainMenu();
+}
+
+void Menu_AddNewRecord(){
+
+
+    CinemaRecord * new_record = (CinemaRecord*)malloc(sizeof(CinemaRecord));
+    EditRecord(new_record);
+    AddNewRecord(records_table,length,new_record);
+    getchar();
+
+    Menu_EditTable();
+
+}
+
+void Menu_EditRecord(){}
+
+void Menu_EditTable(){
+    current_menu_textfile = (char*)malloc(sizeof(char)*100);
+    strcpy(current_menu_textfile,RussianOrEnglish ? "/Users/admin/Desktop/программирование/c++/Console_application/Edit_Menu_Russian.txt":"/Users/admin/Desktop/программирование/c++/Console_application/Edit_Menu_English.txt");
+
+
+    DrawMenu(current_menu_textfile,
+             5, // 5 пунктов меню
+             Menu_AddNewRecord,
+             Menu_EditRecord,
+             DeleteRecord,
+             ChangeLang,
+             OnMainMenu);
 }

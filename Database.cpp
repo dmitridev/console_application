@@ -6,24 +6,24 @@
 #include "CinemaRecord.h"
 
 
-CinemaRecord* ReadDatabaseFile(char * filename,int &length){
+CinemaRecord** ReadDatabaseFile(char * filename,int &length){
 
 
-    printf("im here right now\n");
-    CinemaRecord * Table;
+    CinemaRecord ** Table;
     FILE* f = fopen(filename,"r");
     char buffer[512];
     int linesCount = 0;
 
-    Table  = (CinemaRecord*)malloc(sizeof(CinemaRecord)*2
-    );
+    Table  = (CinemaRecord**)calloc(1,sizeof( CinemaRecord* ));
 
     while(fgets(buffer,512,f)){
-        printf("linesCount = %d",linesCount);
+
+        Table[linesCount] = (CinemaRecord*)calloc(1, sizeof(CinemaRecord));
+        // заполняем структуру значениями
         StringToCinemaRecord(&Table[linesCount],buffer);
         linesCount++;
-        realloc(Table,linesCount+1 * sizeof(CinemaRecord)); // перевыделяем память еще на одну ячейку больше
-         // заполняем структуру значениями
+        recalloc(Table,linesCount, sizeof( CinemaRecord* )); // перевыделяем память еще на одну ячейку больше
+
     }
 
     length = linesCount;
@@ -31,88 +31,102 @@ CinemaRecord* ReadDatabaseFile(char * filename,int &length){
     return Table;
 }
 
-void ShowTable(CinemaRecord * records,int length){
-    fflush(stdin);
+void ShowTable(CinemaRecord ** records,int length){
+
+    system("clear");
     for(int i=0;i<length;i++){
         printf("%d:",i);
-        ShowRecord(records[i]);
-        getchar();
+        ShowRecord(*records[i]);
+        printf("\n____________________________________________________________________\n");
     }
+
+    getchar();
+
 }
 
 
-void StringToCinemaRecord(CinemaRecord* record, char* buffer){
+void StringToCinemaRecord(CinemaRecord** record, char* buffer){
 
 
 
     //разбить строку на "|" и сделать подписать
     char * str = strtok(buffer,"|");
-    SetName(record,str);
+    SetName(*record,str);
 
 
     str = strtok(NULL,"|");
-    SetYear(record, atoi(str)); // на выходе получается строка мы её конвертируем в число
+    SetYear(*record, atoi(str)); // на выходе получается строка мы её конвертируем в число
 
     str = strtok(NULL,"|");
-    SetCountry(record,str);
+    SetCountry(*record,str);
 
     str = strtok(NULL,"|");
-    SetDirector(record,str);
+    SetDirector(*record,str);
 
     str = strtok(NULL,"|");
-    SetScriptWriter(record,str);
+    SetScriptWriter(*record,str);
 
     str = strtok(NULL,"|");
-    SetProducer(record,str);
+    SetProducer(*record,str);
 
     str = strtok(NULL,"|");
-    SetBudget(record,atof(str));
+    SetBudget(*record,atof(str));
 
     str = strtok(NULL,"|");
-    SetDuration(record,atoi(str));
+    SetDuration(*record,atoi(str));
 
     str = strtok(NULL,"|");
-    SetGenre(record,str);
+    SetGenre(*record,str);
 
     str = strtok(NULL,"|");
     //формат даты будет таким
     int year,month,day;
     sscanf(str,"%d/%d/%d",&year,&month,&day);
 
-    SetReleaseDate(record,day,month,year);
+    SetReleaseDate(*record,day,month,year);
 
     str = strtok(NULL,"|");
-    SetTagLine(record,str);
+    SetTagLine(*record,str);
 
 }
 
 
 
 void EditRecord(CinemaRecord* record){
-        SetName(record,EnterStringFromConsole());
-        SetYear(record,EnterIntFromConsole());
-        SetCountry(record,EnterStringFromConsole());
-        SetDirector(record,EnterStringFromConsole());
-        SetScriptWriter(record,EnterStringFromConsole());
-        SetProducer(record,EnterStringFromConsole());
-        SetBudget(record,EnterFloatFromConsole());
-        SetDuration(record,EnterIntFromConsole());
-        SetGenre(record,EnterStringFromConsole());
-        SetReleaseDate(record,EnterIntFromConsole(),EnterIntFromConsole(),EnterIntFromConsole());
-        SetTagLine(record,EnterStringFromConsole());
+
+        SetName(record,EnterStringFromConsole("Enter Film name:","error: try again"));
+
+        SetYear(record,EnterIntFromConsole("Enter Year:","error:try again",1895,2100));
+
+        SetCountry(record,EnterStringFromConsole("Enter Country:","error:try again"));
+        SetDirector(record,EnterStringFromConsole("Enter Film Director","error: try again"));
+        SetScriptWriter(record,EnterStringFromConsole("Enter ScriptWriter","error: try again"));
+        SetProducer(record,EnterStringFromConsole("Enter Producer name:","error: try again"));
+        SetBudget(record,EnterFloatFromConsole("Enter budget","error: try again",0,500000000000));
+        SetDuration(record,EnterIntFromConsole("Enter Duration","error:try again",1,14440));
+        SetGenre(record,EnterStringFromConsole("Enter Film Genre","error:try again"));
+        SetReleaseDate(record,EnterIntFromConsole("Enter Year:","error: try again",1895,2100),
+                              EnterIntFromConsole("Enter Month:[1-12]","error:enter correct date[1-12]",1,12),
+                              EnterIntFromConsole("Enter Day:[1-31]","error:enter correct date[1-31]",1,31));
+
+        SetTagLine(record,EnterStringFromConsole("Enter tagline","error:try again"));
+
 }
 
-void AddNewRecord(CinemaRecord * records_table,int length, CinemaRecord* new_record){
+void AddNewRecord(CinemaRecord ** records_table,int &length, CinemaRecord* new_record){
 
-    realloc(records_table,length+1 * sizeof(CinemaRecord));
-    records_table[length] = *new_record;
+
+    recalloc(records_table,++length, sizeof(CinemaRecord*));
+    records_table[length] = new_record;
+
 }
 
-void DeleteRecord(CinemaRecord* records_table,int length,int record_number){
+void DeleteRecord(CinemaRecord* records_table,int &length,int record_number){
 
         for(int i = record_number;i<length;i++){
             records_table[i] = records_table[i+1];
         }
+    length--;
 }
 
 /*функция для третьего пункта меню
@@ -420,7 +434,7 @@ void SortByTagLine(CinemaRecord* records_table,int length,bool MinMax){
                                     }
 }
 
-void SortByParameter(SORT_VALUES parameter,CinemaRecord * records_table,int length,bool MinMax){
+void SortByParameter(SORT_VALUES parameter,CinemaRecord *records_table,int length,bool MinMax){
     switch(parameter){
         case NAME:{
             SortByName(records_table,length,MinMax);

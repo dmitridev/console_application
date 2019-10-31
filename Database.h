@@ -6,17 +6,17 @@
 
 
 //работа и преобразование строки в структуру CinemaRecord
-void StringToCinemaRecord(CinemaRecord* record, char* str);
+void StringToCinemaRecord(CinemaRecord** record, char* str);
 //Прочитать файл базы данных
 
-CinemaRecord* ReadDatabaseFile(char * filename,int &length);
+CinemaRecord** ReadDatabaseFile(char * filename,int &length);
 //показать таблицу
-void ShowTable(CinemaRecord * records,int length);
+void ShowTable(CinemaRecord ** records,int length);
 
 /* пункт 2 редактировать запись*/
-void AddNewRecord(CinemaRecord * records_table,int length, CinemaRecord* new_record);
+void AddNewRecord(CinemaRecord ** records_table,int &length, CinemaRecord* new_record);
 void EditRecord(CinemaRecord* record);
-void DeleteRecord(CinemaRecord* records_table,int length,int record_number);
+void DeleteRecord(CinemaRecord* records_table,int &length,int record_number);
 
 /*пункт 3 сортировать по*/
 
